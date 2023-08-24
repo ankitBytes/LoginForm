@@ -4,12 +4,14 @@ const app = express();
 const cors = require("cors");
 const bcrypt = require("bcrypt");
 const User = require("./userSchema");
+require('dotenv').config();
 
 app.use(cors());
 
 app.use(express.json());
 
-const uri = "mongodb+srv://admin:ankit123@cluster0.5xjjb3q.mongodb.net/"; //used to connect to the prefered db
+const uri = process.env.mongodb; //used to connect to the prefered db
+
 
 const client = new MongoClient(uri, {
   useNewUrlParser: true,
